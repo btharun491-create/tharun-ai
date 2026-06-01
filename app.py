@@ -5,32 +5,31 @@ from google.genai import types
 # Page setup and layout config
 st.set_page_config(page_title="Mana Sonta AI Chatbot", page_icon="🤖", layout="centered")
 
-# CSS Magic: Kinda unna "Created by / Hosted with Streamlit" bar motham completely HIDE!
+# CSS Magic: Top header, GitHub icons, and Kinda unna footer status bar completely VANISH!
 st.markdown("""
     <style>
-    /* Top Header and Deploy elements hide */
-    header, [data-testid="stHeader"] {visibility: hidden !important; display: none !important;}
-    .stDeployButton {display:none !important;}
-    #MainMenu {visibility: hidden !important;}
-    footer {visibility: hidden !important;}
+    /* Hide top header and deploy options */
+    header, [data-testid="stHeader"] { visibility: hidden !important; display: none !important; }
+    .stDeployButton { display: none !important; }
+    #MainMenu { visibility: hidden !important; }
     
-    /* Title pakkana unna extra elements hide */
-    h1 a {display: none !important;}
-    .stMarkdown h1 a {display: none !important;}
-    
-    /* Decoration and Toolbar completely remove */
+    /* Title links and extra toolbar icons hide */
+    h1 a { display: none !important; }
+    .stMarkdown h1 a { display: none !important; }
     div[data-testid="stDecoration"] { display: none !important; }
     .stCodeBlock { display: none !important; }
     div[data-testid="stToolbar"] { display: none !important; }
     button[title="View source"] { display: none !important; }
     
-    /* Kinda unna red color watermark bar elements completely vanish */
-    div[data-testid="stFooter"] { display: none !important; visibility: hidden !important; }
-    .viewerBadge_container__1QSob { display: none !important; visibility: hidden !important; }
-    [data-testid="stBottomBlockContainer"] footer { display: none !important; }
+    /* HARD BLOCK: Kinda unna "Created by Streamlit" watermark & footer container completely hide */
+    footer { visibility: hidden !important; display: none !important; }
+    div[data-testid="stFooter"] { visibility: hidden !important; display: none !important; }
+    .viewerBadge_container__1QSob { visibility: hidden !important; display: none !important; }
+    [data-testid="stBottomBlockContainer"] footer { visibility: hidden !important; display: none !important; }
+    footer a, footer div { visibility: hidden !important; display: none !important; }
     
-    /* Target specifically the footer status bar styling */
-    footer a, footer div { display: none !important; }
+    /* Adjust spacing at the bottom after hiding footer */
+    .stAppDeployButton { display: none !important; }
     </style>
     """, unsafe_allow_html=True)
 
