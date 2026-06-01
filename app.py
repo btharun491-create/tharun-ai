@@ -5,18 +5,27 @@ from google.genai import types
 # Page setup and layout config
 st.set_page_config(page_title="Mana Sonta AI Chatbot", page_icon="🤖", layout="centered")
 
-# CSS Magic: Fixed look to hide Crown, Deploy, Menu, GitHub Link & borders completely!
+# CSS Magic: Header elements, title links, buttons, watermarks ANNI completely VANISH!
 st.markdown("""
     <style>
-    header {visibility: hidden !important;}
+    /* Top Header and Deploy elements hide */
+    header, [data-testid="stHeader"] {visibility: hidden !important; display: none !important;}
     .stDeployButton {display:none !important;}
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
+    
+    /* Title pakkana unna extra anchor link or buttons hide cheyadaniki */
+    h1 a {display: none !important;}
+    .stMarkdown h1 a {display: none !important;}
+    
+    /* Decoration line and borders remove */
     div[data-testid="stDecoration"] { display: none !important; }
-    div[data-testid="stHeader"] { display: none !important; }
     .stCodeBlock { display: none !important; }
     div[data-testid="stToolbar"] { display: none !important; }
     button[title="View source"] { display: none !important; }
+    
+    /* Watermarks completely zero */
+    .viewerBadge_container__1QSob { display: none !important; }
     </style>
     """, unsafe_allow_html=True)
 
