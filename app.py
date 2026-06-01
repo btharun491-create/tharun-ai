@@ -5,7 +5,7 @@ from google.genai import types
 # Page setup and layout config
 st.set_page_config(page_title="Mana Sonta AI Chatbot", page_icon="🤖", layout="centered")
 
-# CSS Magic: Top header, GitHub icons, and Kinda unna footer status bar completely VANISH!
+# CSS Magic: Top header, Toolbar elements, and Kinda unna "Created by Streamlit" bar 100% BLOCKED!
 st.markdown("""
     <style>
     /* Hide top header and deploy options */
@@ -21,15 +21,16 @@ st.markdown("""
     div[data-testid="stToolbar"] { display: none !important; }
     button[title="View source"] { display: none !important; }
     
-    /* HARD BLOCK: Kinda unna "Created by Streamlit" watermark & footer container completely hide */
-    footer { visibility: hidden !important; display: none !important; }
-    div[data-testid="stFooter"] { visibility: hidden !important; display: none !important; }
+    /* ULTRA HARD BLOCK: Target all possible footer classes, elements and tags */
+    footer { visibility: hidden !important; display: none !important; height: 0px !important; }
+    div[data-testid="stFooter"] { visibility: hidden !important; display: none !important; height: 0px !important; }
     .viewerBadge_container__1QSob { visibility: hidden !important; display: none !important; }
     [data-testid="stBottomBlockContainer"] footer { visibility: hidden !important; display: none !important; }
-    footer a, footer div { visibility: hidden !important; display: none !important; }
+    footer a, footer div, footer span { display: none !important; visibility: hidden !important; }
     
-    /* Adjust spacing at the bottom after hiding footer */
+    /* Remove background overlay padding at the bottom */
     .stAppDeployButton { display: none !important; }
+    div.stAppviewElementContainer { padding-bottom: 0px !important; }
     </style>
     """, unsafe_allow_html=True)
 
