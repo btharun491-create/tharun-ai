@@ -5,7 +5,7 @@ from google.genai import types
 # Page setup and layout config
 st.set_page_config(page_title="Mana Sonta AI Chatbot", page_icon="🤖", layout="centered")
 
-# CSS Magic: Header elements, title links, buttons, watermarks ANNI completely VANISH!
+# CSS Magic: Kinda unna "Created by / Hosted with Streamlit" bar motham completely HIDE!
 st.markdown("""
     <style>
     /* Top Header and Deploy elements hide */
@@ -14,18 +14,23 @@ st.markdown("""
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
     
-    /* Title pakkana unna extra anchor link or buttons hide cheyadaniki */
+    /* Title pakkana unna extra elements hide */
     h1 a {display: none !important;}
     .stMarkdown h1 a {display: none !important;}
     
-    /* Decoration line and borders remove */
+    /* Decoration and Toolbar completely remove */
     div[data-testid="stDecoration"] { display: none !important; }
     .stCodeBlock { display: none !important; }
     div[data-testid="stToolbar"] { display: none !important; }
     button[title="View source"] { display: none !important; }
     
-    /* Watermarks completely zero */
-    .viewerBadge_container__1QSob { display: none !important; }
+    /* Kinda unna red color watermark bar elements completely vanish */
+    div[data-testid="stFooter"] { display: none !important; visibility: hidden !important; }
+    .viewerBadge_container__1QSob { display: none !important; visibility: hidden !important; }
+    [data-testid="stBottomBlockContainer"] footer { display: none !important; }
+    
+    /* Target specifically the footer status bar styling */
+    footer a, footer div { display: none !important; }
     </style>
     """, unsafe_allow_html=True)
 
