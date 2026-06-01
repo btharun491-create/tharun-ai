@@ -5,32 +5,32 @@ from google.genai import types
 # Page setup and layout config
 st.set_page_config(page_title="Mana Sonta AI Chatbot", page_icon="🤖", layout="centered")
 
-# CSS Magic: Top header, Toolbar elements, and Kinda unna "Created by Streamlit" bar 100% BLOCKED!
+# Ultra Clean Magic: Hiding all headers, icons, and text inside footer invisibly!
 st.markdown("""
     <style>
-    /* Hide top header and deploy options */
-    header, [data-testid="stHeader"] { visibility: hidden !important; display: none !important; }
-    .stDeployButton { display: none !important; }
-    #MainMenu { visibility: hidden !important; }
+    /* Hide top header, main menu and deploy buttons */
+    header, [data-testid="stHeader"], .stDeployButton, #MainMenu { 
+        visibility: hidden !important; 
+        display: none !important; 
+    }
     
-    /* Title links and extra toolbar icons hide */
-    h1 a { display: none !important; }
-    .stMarkdown h1 a { display: none !important; }
-    div[data-testid="stDecoration"] { display: none !important; }
-    .stCodeBlock { display: none !important; }
-    div[data-testid="stToolbar"] { display: none !important; }
-    button[title="View source"] { display: none !important; }
+    /* Remove title decoration lines and source buttons */
+    h1 a, .stMarkdown h1 a, div[data-testid="stDecoration"], .stCodeBlock, div[data-testid="stToolbar"], button[title="View source"] { 
+        display: none !important; 
+    }
     
-    /* ULTRA HARD BLOCK: Target all possible footer classes, elements and tags */
-    footer { visibility: hidden !important; display: none !important; height: 0px !important; }
-    div[data-testid="stFooter"] { visibility: hidden !important; display: none !important; height: 0px !important; }
-    .viewerBadge_container__1QSob { visibility: hidden !important; display: none !important; }
-    [data-testid="stBottomBlockContainer"] footer { visibility: hidden !important; display: none !important; }
-    footer a, footer div, footer span { display: none !important; visibility: hidden !important; }
+    /* TARGET FOOTER TEXT & LOGOS DIRECTLY WITHOUT BREAKING THE CHAT CONTAINER */
+    footer, div[data-testid="stFooter"], .viewerBadge_container__1QSob {
+        visibility: hidden !important;
+    }
     
-    /* Remove background overlay padding at the bottom */
-    .stAppDeployButton { display: none !important; }
-    div.stAppviewElementContainer { padding-bottom: 0px !important; }
+    /* Make the specific text span inside the status bar invisible */
+    footer div, footer a, footer span, [data-testid="stBottomBlockContainer"] footer * {
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0px !important;
+        font-size: 0px !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
