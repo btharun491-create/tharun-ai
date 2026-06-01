@@ -5,7 +5,7 @@ from google.genai import types
 # Page setup and layout config
 st.set_page_config(page_title="Mana Sonta AI Chatbot", page_icon="🤖", layout="centered")
 
-# CSS Magic: Crown, Deploy, Menu, GitHub Link & borders ANNI completely HIDE!
+# CSS Magic: Fixed look to hide Crown, Deploy, Menu, GitHub Link & borders completely!
 st.markdown("""
     <style>
     header {visibility: hidden !important;}
@@ -18,7 +18,7 @@ st.markdown("""
     div[data-testid="stToolbar"] { display: none !important; }
     button[title="View source"] { display: none !important; }
     </style>
-    """, unsafe_content_allowed=True)
+    """, unsafe_allow_html=True)
 
 st.title("🤖 Mana Sonta AI Chatbot")
 
