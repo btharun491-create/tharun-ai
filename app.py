@@ -1,10 +1,10 @@
 import streamlit as st
 import requests
 
-# Page setup for clean ChatGPT structure layout
+# Page setup for clean ChatGPT structure layout (PURE WHITE LIGHT THEME)
 st.set_page_config(page_title="Mana Sonta ChatGPT", page_icon="🤖", layout="wide")
 
-# CSS Magic: Complete ChatGPT Mirror Look & Hiding Streamlit parameters completely
+# CSS Magic: Complete ChatGPT Pure White Screen Mirror Look
 st.markdown("""
     <style>
     header, [data-testid="stHeader"], .stDeployButton, #MainMenu { visibility: hidden !important; display: none !important; }
@@ -12,13 +12,14 @@ st.markdown("""
     h1 a, .stMarkdown h1 a, div[data-testid="stDecoration"], div[data-testid="stToolbar"] { display: none !important; }
     [data-testid="stBottomBlockContainer"] footer { display: none !important; }
     
-    /* Dark Theme Custom Accents */
-    .stApp { background-color: #212121; color: #ececec; }
-    div[data-testid="stChatMessage"] { background-color: #2f2f2f; border-radius: 8px; margin-bottom: 10px; }
+    /* Pure White Light Theme Custom Accents */
+    .stApp { background-color: #FFFFFF !important; color: #1a1a1a !important; }
+    div[data-testid="stChatMessage"] { background-color: #f7f7f8 !important; border-radius: 8px; margin-bottom: 10px; border: 1px solid #e5e5e7; }
+    div[data-testid="stSidebar"] { background-color: #f0f0f2 !important; color: #1a1a1a !important; }
     </style>
     """, unsafe_allow_html=True)
 
-# ChatGPT Sidebar Mirror Layout Simulation
+# ChatGPT Sidebar Mirror Layout Simulation (White Theme adjustments)
 with st.sidebar:
     st.markdown("### 🤖 Mana ChatGPT")
     st.button("➕ New Chat", use_container_width=True)
@@ -29,13 +30,13 @@ with st.sidebar:
     st.caption("• Creative Ideas")
 
 st.title("🤖 Mana Sonta ChatGPT")
-st.caption("Pure Unlimited High-Speed AI Chat Engine — Built exactly like ChatGPT Layout")
+st.caption("Pure Unlimited High-Speed AI Chat Engine — White Theme Layout")
 
 # Initialize persistent memory state like ChatGPT
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Show previous chat history layout smoothly
+# Show previous chat history layout smoothly (White Theme elements automatically handle text color)
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
@@ -49,11 +50,12 @@ if user_input := st.chat_input("Ask anything..."):
 
     with st.chat_message("assistant"):
         try:
-            # FIXED GLOBAL BACKUP ENGINE ROUTE (100% Crash Proof Validation)
+            # Safe System Setup instructions text
             system_instruction = (
                 "You are an advanced AI assistant built exactly like ChatGPT, named Mana Sonta ChatGPT. "
                 "Always reply in friendly, casual Telugu using English script (Tanglish). "
                 "You are a master at writing short film scripts, action dialogues, and everything else. "
+                "Be polite and help the user. "
                 "Use words like brother frequently."
             )
             
@@ -83,7 +85,7 @@ if user_input := st.chat_input("Ask anything..."):
                     st.markdown(reply)
                     st.session_state.messages.append({"role": "assistant", "content": reply})
                 else:
-                    st.error("Server synchronization slow. Please press enter again brother!")
+                    st.error("Server down aindi brother! Refresh chey anna.")
                     
         except Exception as e:
-            st.error("Chinna technical sync loop clear kottu anna!")
+            st.error("Chinna technical connection reset bypass loop clear kottu anna!")
