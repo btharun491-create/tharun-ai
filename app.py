@@ -35,26 +35,32 @@ if user_input := st.chat_input("Adagandi brother, ChatGPT laaga any topic automa
 
     with st.chat_message("assistant"):
         try:
-            # UNLIMITED CORE CHAT ENGINE (Bypassing all API Key limits permanently!)
+            # Safe System Setup instructions text
             system_prompt = (
-                "You are an advanced AI assistant built exactly like ChatGPT, named Mana Sonta ChatGPT. "
+                "You are an advanced AI assistant built exactly like ChatGPT. "
                 "Always reply in friendly, casual Telugu using English script (Tanglish). "
                 "You are an expert at everything from coding to writing short film scripts, action dialogue sequences, and ideas. "
                 "Be incredibly polite, help the user with precise information, and use words like brother frequently."
             )
             
-            # Formatting request packet securely
-            url = f"https://text.pollinations.ai/{requests.utils.quote(user_input)}?system={requests.utils.quote(system_prompt)}"
+            # STABLE JSON METHOD FOR SAFE DATA PASSING (ZERO FORMAT ERRORS)
+            payload = {
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_input}
+                ],
+                "model": "openai"
+            }
             
             with st.spinner("Thinking like ChatGPT..."):
-                res = requests.get(url, timeout=30)
+                res = requests.post("https://text.pollinations.ai/", json=payload, timeout=30)
                 
             if res.status_code == 200:
                 reply = res.text.strip()
                 st.markdown(reply)
                 st.session_state.messages.append({"role": "assistant", "content": reply})
             else:
-                st.error("Server loop loading error! Refresh chey anna.")
+                st.error("Server chinnaga sleep aindi brother! Refresh chey anna.")
                     
         except Exception as e:
-            st.error("Chinna technical data block clear kottu anna!")
+            st.error("Chinna technical connection clear kottu anna!")
