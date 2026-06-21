@@ -1,14 +1,16 @@
 import streamlit as st
 import google.generativeai as genai
 
+st.set_page_config(page_title="Mana Sonta AI")
 st.title("🤖 Mana Sonta AI")
 
-# Secrets load cheyi
+# API Key check
 if "GOOGLE_API_KEY" in st.secrets:
     genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-   model = genai.GenerativeModel('gemini-1.5-flash-8b')
+    # Model configuration
+    model = genai.GenerativeModel('gemini-1.5-flash-8b')
 else:
-    st.error("Secrets lo GOOGLE_API_KEY set cheyi!")
+    st.error("API Key set cheyaledu!")
     st.stop()
 
 if "messages" not in st.session_state:
@@ -24,6 +26,9 @@ if prompt := st.chat_input("Em adagali?"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        response = model.generate_content(prompt)
-        st.markdown(response.text)
-        st.session_state.messages.append({"role": "assistant", "content": response.text})
+        try:
+            response = model.generate_content(prompt)
+            st.markdown(response.text)
+            st.session_state.messages.append({"role": "assistant", "content": response.text})
+        except Exception as e:
+            st.error(f"Error: {e}")
